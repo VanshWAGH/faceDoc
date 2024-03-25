@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Face Detection Website</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.3.0/css/bootstrap.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
+    />
+    <style>
+      /* Custom CSS styles */
+      body {
+        background-color: #1f1f1f; /* Dark background color */
+        font-family: "Segoe UI", sans-serif;
+        display: flex;
+        flex-direction: column;
+        min-height: 100vh;
+        color: #fff; /* Text color */
+      }
+
+      header {
+        background-color: #212121; /* Darker header background */
+        color: #fff;
+        padding: 20px 0;
+        text-align: center;
+      }
+
+      header h1 {
+        margin: 0;
+        font-weight: bold;
+      }
+
+      nav {
+        background-color: #282828; /* Slightly darker navbar background */
+        padding: 10px 0;
+      }
+
+      nav a {
+        color: #ddd; /* Lighter link text color */
+      }
+
+      main {
+        flex-grow: 1;
+        padding: 20px;
+      }
+
+      .card {
+        border: none;
+        border-radius: 10px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Added shadow */
+        transition: transform 0.3s, box-shadow 0.3s; /* Added transition */
+        background-color: #333; /* Dark card background */
+        color: #fff;
+        height: 100%; /* Increased height */
+      }
+
+      .card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3); /* Increased shadow on hover */
+      }
+
+      .card-title {
+        font-size: 1.5rem;
+        font-weight: bold;
+        margin-bottom: 20px;
+      }
+
+      .card-text {
+        font-size: 1.1rem;
+        color: #ccc; /* Lighter text color */
+        margin-bottom: 30px;
+      }
+
+      .action-btn {
+        display: block;
+        width: 100%;
+        padding: 12px 20px;
+        background-color: #007bff;
+        color: #fff;
+        text-align: center;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: background-color 0.3s;
+      }
+
+      .action-btn:hover {
+        background-color: #0056b3;
+      }
+
+      footer {
+        background-color: #212121; /* Darker footer background */
+        color: #ccc; /* Lighter text color */
+        padding: 20px 0;
+        text-align: center;
+      }
+
+      footer p {
+        margin: 0;
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <h1>Face Detection Website</h1>
+    </header>
+
+    <nav>
+      <!-- Your navigation links here -->
+    </nav>
+
+    <main class="container">
+      <div class="row">
+        <div class="col-md-4">
+          <div class="card">
+            <div class="card-body">
+              <h2 class="card-title">Capture Images</h2>
+              <p class="card-text">
+                Click the button below to start capturing images.
+              </p>
+              <form action="{% url 'capture_images' %}" method="post">
+                {% csrf_token %}
+                <button type="submit" class="btn btn-primary action-btn">
+                  <i class="fas fa-camera"></i> Capture Images
+                </button>
+              </form>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="card">
+            <div class="card-body">
+              <h2 class="card-title">Recognize Faces</h2>
+              <p class="card-text">
+                Click the button below to recognize faces.
+              </p>
+              <a
+                href="{% url 'recognize_faces' %}"
+                class="btn btn-primary action-btn"
+              >
+                <i class="fas fa-eye"></i> Recognize Faces
+              </a>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="card">
+            <div class="card-body">
+              <h2 class="card-title">Train Model</h2>
+              <p class="card-text">
+                Click the button below to train the model.
+              </p>
+              <a
+                href="{% url 'train_model' %}"
+                class="btn btn-primary action-btn"
+              >
+                <i class="fas fa-robot"></i> Train Model
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <footer>
+      <p>&copy; 2024 Face Detection Website</p>
+    </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/js/all.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+  </body>
+</html>
